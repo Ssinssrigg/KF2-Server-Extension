@@ -26,8 +26,9 @@ function Timer()
 }
 simulated function Tick( float Delta )
 {
-	if( WorldInfo.NetMode==NM_DedicatedServer || PawnOwner==None || PawnOwner.InvManager==None || KFWeapon(PawnOwner.Weapon)==None || KFWeapon(PawnOwner.Weapon).GetWeaponPerkClass(AssociatedPerkClass)!=AssociatedPerkClass )
+	if( WorldInfo.NetMode==NM_DedicatedServer || PawnOwner==None || PawnOwner.InvManager==None || KFWeapon(PawnOwner.Weapon)==None || KFWeapon(PawnOwner.Weapon).GetWeaponPerkClass(AssociatedPerkClass)!=AssociatedPerkClass || KFWeapon(PawnOwner.BasePerk)!=KFPerk_Survivalist )
 		return;
+	// Dunno or If there's no pawn owner (no player?) or Nothing in control of the inventory? or Weapon shows no owner or Weapon's owner's perk does not match weapon's perk or Weapon's owner's perk is not Survivalist, back out
 	
 	// Find local playercontroller.
 	if( LocalPC==None )
