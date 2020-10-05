@@ -27,6 +27,7 @@ function Timer()
 				if( W.SpareAmmoCount[i]<W.SpareAmmoCapacity[i] )
 				{
 					W.SpareAmmoCount[i] = Min(W.SpareAmmoCount[i]+FMax(float(W.SpareAmmoCapacity[i])*RegCount,1.f),W.SpareAmmoCapacity[i]);
+					W.ClientForceSecondaryAmmoUpdate(W.AmmoCount[i]);
 					W.bNetDirty = true;
 				}
 			}
